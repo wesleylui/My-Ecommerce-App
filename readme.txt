@@ -1,0 +1,4 @@
+list all libraries used/imported in React app
+list all necessary commands to install libraries using npm
+
+npm install styled-components
