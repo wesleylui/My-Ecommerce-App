@@ -1,13 +1,48 @@
-import React from 'react';
+import React from "react";
 
 function homeMainSection() {
-    return (
-        <nav>
-            <a href="/" class="nav-link">Home</a>
-            <a href="products.html" class="nav-link">Products</a> 
-            <a href="login.html" class="nav-link">Login</a>
-        </nav>
-    );
+  return (
+    <main>
+      {/*<!-- About Us Section -->*/}
+      <section>
+        <h2>About Us</h2>
+        <p>
+          BBBaaaaaa. Whats that? Oh its the goat, King James. LeShop is your
+          goto place for anything Lebron James related.
+        </p>
+      </section>
+
+      {/*<!-- Shop Now Button -->*/}
+      <section>
+        <button>
+          <a href="products.html">Shop Now</a>
+        </button>
+      </section>
+
+      {/*<!-- Customer Reviews Section -->*/}
+      <section class="customer-reviews">
+        <h2>Customer Reviews</h2>
+
+        {/*<!-- Review 1 -->*/}
+        <div class="review">
+          <p>
+            <span class="customer-name">Aiden Lambert:</span>
+            "I love Lebron! He is my glorious king! I will buy all his merch."
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+          </p>
+        </div>
+
+        {/*<!-- Review 2 -->*/}
+        <div class="review">
+          <p>
+            <span class="customer-name">Omar Ahmed:</span>
+            "Amazing shop. User-friendly. Handsome development team."
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+          </p>
+        </div>
+      </section>
+    </main>
+  );
 }
 
 export default homeMainSection;
