@@ -7,6 +7,7 @@ function Header() {
             <header class="header">
                 <div class="logo">
                     <img src="./my-ecommerce-app/public/images/logo.png" alt="Company Logo"></img>
+                    {/*<!-- TODO: fix image path -->*/}
                 </div>
                 <div class="company-name">
                     Company Name

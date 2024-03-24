@@ -32,7 +32,7 @@ function HomeMainSection() {
       </section>
 
       {/*<!-- Render the selected reviews -->*/}
-      <div>
+      <section class="customer-reviews">
         {selectedReviews.map((review, index) => (
           <div key={index} class="review">
             <h2>{review.customerName}</h2>
@@ -40,7 +40,7 @@ function HomeMainSection() {
             <p>Rating: {'⭐'.repeat(review.stars)}</p> {/* Display as many star emojis as number from review.stars */}
           </div>
         ))}
-      </div>
+      </section>
     </main>
   );
 }
