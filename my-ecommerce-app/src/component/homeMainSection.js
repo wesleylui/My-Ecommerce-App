@@ -4,7 +4,7 @@ function homeMainSection() {
   return (
     <main>
       {/*<!-- About Us Section -->*/}
-      <section>
+      <section class="about-us">
         <h2>About Us</h2>
         <p>
           BBBaaaaaa. Whats that? Oh its the goat, King James. LeShop is your
@@ -13,13 +13,14 @@ function homeMainSection() {
       </section>
 
       {/*<!-- Shop Now Button -->*/}
-      <section>
+      <section class="shop-now">
         <button>
           <a href="products.html">Shop Now</a>
         </button>
       </section>
 
       {/*<!-- Customer Reviews Section -->*/}
+      {/*<!-- TODO: these customer reviews should come from reviews.js -->*/}
       <section class="customer-reviews">
         <h2>Customer Reviews</h2>
 

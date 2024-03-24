@@ -1,0 +1,87 @@
+/* for all pages */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* footer.js COMPONENT */
+footer {
+  background-color: #333;
+  padding: 10px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+/* header.js COMPONENT*/
+.header {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 50px;
+}
+
+.company-name {
+  color: white;
+  font-size: 2em;
+}
+
+/*navigation links*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #333;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* homeMainSection.js COMPONENT */
+/* home page */
+.about-us {
+  display: flex;
+  flex-direction: column;
+  background-color: #ddd;
+  padding: 20px;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.shop-now button {
+  background-color: #4caf50;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.shop-now button:hover {
+  background-color: #45a049;
+}
+
+.shop-now a {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+/* Customer Reviews*/
+.customer-reviews {
+  background-color: #ddd;
+  padding: 20px;
+  margin: 20px;
+}
