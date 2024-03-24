@@ -7,8 +7,8 @@ import Footer from "./footer.js";
 function Homepage() {
   return (
     <div>
-      From Homepage.js (Child)
-      <Header />
+      <h1>From Homepage.js (Child)</h1>
+      <a href="/"> Home </a>
       {/* <HomeMainSection /> */}
       {/* <Footer /> */}
     </div>
@@ -16,3 +16,4 @@ function Homepage() {
 }
 
 export default Homepage;
+
