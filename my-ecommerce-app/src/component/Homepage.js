@@ -7,10 +7,9 @@ import Footer from "./footer.js";
 function Homepage() {
   return (
     <div>
-      <h1>From Homepage.js (Child)</h1>
-      <a href="/"> Home </a>
-      {/* <HomeMainSection /> */}
-      {/* <Footer /> */}
+      <Header />
+      <HomeMainSection />
+      <Footer />      
     </div>
   );
 }
