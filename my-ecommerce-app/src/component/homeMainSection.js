@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import reviews from '../data/reviews.js';
 
-function homeMainSection() {
+function HomeMainSection() {
+  const [selectedReviews, setSelectedReviews] = useState([]);
+
+  useEffect(() => {
+    const randomReviews = [];
+    for (let i = 0; i < 2; i++) {
+      const randomIndex = Math.floor(Math.random() * reviews.length);
+      randomReviews.push(reviews[randomIndex]);
+    }
+  }, []);
+
   return (
     <main>
       {/*<!-- About Us Section -->*/}
@@ -46,4 +57,4 @@ function homeMainSection() {
   );
 }
 
-export default homeMainSection;
+export default HomeMainSection;
