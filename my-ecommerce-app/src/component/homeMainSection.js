@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import reviews from '../data/reviews.js';
+import reviews from "../data/reviews.js";
 
 function HomeMainSection() {
   const [selectedReviews, setSelectedReviews] = useState([]);
@@ -7,9 +7,10 @@ function HomeMainSection() {
   useEffect(() => {
     const randomReviews = [];
     for (let i = 0; i < 2; i++) {
-      const randomIndex = Math.floor(Math.random() * reviews.length);
-      randomReviews.push(reviews[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * reviews.length); // Generate a random index
+      randomReviews.push(reviews[randomIndex]); //add the review at the random index to the selectedReviews array
     }
+    setSelectedReviews(randomReviews); // Set the selectedReviews state to the randomReviews array
   }, []);
 
   return (
@@ -30,29 +31,16 @@ function HomeMainSection() {
         </button>
       </section>
 
-      {/*<!-- Customer Reviews Section -->*/}
-      {/*<!-- TODO: these customer reviews should come from reviews.js -->*/}
-      <section class="customer-reviews">
-        <h2>Customer Reviews</h2>
-
-        {/*<!-- Review 1 -->*/}
-        <div class="review">
-          <p>
-            <span class="customer-name">Aiden Lambert:</span>
-            "I love Lebron! He is my glorious king! I will buy all his merch."
-            <p class="rating">⭐⭐⭐⭐⭐</p>
-          </p>
-        </div>
-
-        {/*<!-- Review 2 -->*/}
-        <div class="review">
-          <p>
-            <span class="customer-name">Omar Ahmed:</span>
-            "Amazing shop. User-friendly. Handsome development team."
-            <p class="rating">⭐⭐⭐⭐⭐</p>
-          </p>
-        </div>
-      </section>
+      {/*<!-- Render the selected reviews -->*/}
+      <div>
+        {selectedReviews.map((review, index) => (
+          <div key={index} class="review">
+            <h2>{review.customerName}</h2>
+            <p>{review.reviewContent}</p>
+            <p>Rating: {'⭐'.repeat(review.stars)}</p> {/* Display as many star emojis as number from review.stars */}
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
