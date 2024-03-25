@@ -20,8 +20,8 @@ function HomeMainSection() {
       <section class="about-us">
         <h2>About Us</h2>
         <p>
-          BBBaaaaaa. Whats that? Oh its the goat, King James. LeShop is your
-          goto place for anything Lebron James related.
+          Welcome to our online store! We are passionate about providing high-quality products and exceptional customer servie.
+          Learn more about our story and commitment to your satisfaction.
         </p>
       </section>
 
