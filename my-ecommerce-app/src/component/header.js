@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import {Link} from 'react-router-dom';
 
 function Header() {
     return (
@@ -14,9 +15,9 @@ function Header() {
                 </div>
             </header>
             <nav>
-                <a href="/" class="nav-link">Home</a>
-                <a href="products.html" class="nav-link">Products</a> 
-                <a href="login.html" class="nav-link">Login</a>
+                <Link to ="./" class="nav-link">Home</Link>
+                <Link to ="./ProductPage" class="nav-link">Products</Link>
+                <Link to ="./" class="nav-link">Login</Link>
             </nav>
         </div>
     );
