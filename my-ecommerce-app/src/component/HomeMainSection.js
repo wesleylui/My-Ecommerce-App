@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
 import reviews from "../data/reviews.js";
 
 function HomeMainSection() {
@@ -27,7 +28,7 @@ function HomeMainSection() {
       {/*<!-- Shop Now Button -->*/}
       <section class="shop-now">
         <button>
-          <a href="products.html">Shop Now</a>
+          <Link to ="./ProductPage" class="nav-link">Shop Now</Link>
         </button>
       </section>
 
