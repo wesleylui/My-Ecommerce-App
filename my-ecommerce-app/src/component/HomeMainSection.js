@@ -37,7 +37,8 @@ function HomeMainSection() {
           <div key={index} class="review">
             <h2>{review.customerName}</h2>
             <p>{review.reviewContent}</p>
-            <p>Rating: {'⭐'.repeat(review.stars)}</p> {/* Display as many star emojis as number from review.stars */}
+            <p>Rating: {"⭐".repeat(review.stars)}</p>{" "}
+            {/* Display as many star emojis as number from review.stars */}
           </div>
         ))}
       </section>
