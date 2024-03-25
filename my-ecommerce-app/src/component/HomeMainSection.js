@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import reviews from "../data/reviews.js";
 
 function HomeMainSection() {
@@ -8,7 +8,12 @@ function HomeMainSection() {
   useEffect(() => {
     const randomReviews = [];
     for (let i = 0; i < 2; i++) {
-      const randomIndex = Math.floor(Math.random() * reviews.length); // Generate a random index
+      const randomIndex = Math.floor(Math.random() * reviews.length); // Generate a random index\
+      if (randomReviews.includes(reviews[randomIndex])) {
+        i--; //if randomReviews already includes the index, decrement i so we change one less review
+        //the two reviews will never be the same review bc cant be same index
+        continue;
+      }
       randomReviews.push(reviews[randomIndex]); //add the review at the random index to the selectedReviews array
     }
     setSelectedReviews(randomReviews); // Set the selectedReviews state to the randomReviews array
@@ -20,15 +25,18 @@ function HomeMainSection() {
       <section class="about-us">
         <h2>About Us</h2>
         <p>
-          Welcome to our online store! We are passionate about providing high-quality products and exceptional customer servie.
-          Learn more about our story and commitment to your satisfaction.
+          Welcome to our online store! We are passionate about providing
+          high-quality products and exceptional customer servie. Learn more
+          about our story and commitment to your satisfaction.
         </p>
       </section>
 
       {/*<!-- Shop Now Button -->*/}
       <section class="shop-now">
         <button>
-          <Link to ="./ProductPage" class="nav-link">Shop Now</Link>
+          <Link to="./ProductPage" class="nav-link">
+            Shop Now
+          </Link>
         </button>
       </section>
 
