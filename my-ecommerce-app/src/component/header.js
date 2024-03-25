@@ -15,9 +15,9 @@ function Header() {
                 </div>
             </header>
             <nav>
-                <Link to ="./" class="nav-link">Home</Link>
-                <Link to ="./ProductPage" class="nav-link">Products</Link>
-                <Link to ="./" class="nav-link">Login</Link>
+                <Link to ="/" class="nav-link">Home</Link>
+                <Link to ="/ProductPage" class="nav-link">Products</Link>
+                <Link to ="/" class="nav-link">Login</Link>
             </nav>
         </div>
     );
