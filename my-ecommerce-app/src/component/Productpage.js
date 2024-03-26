@@ -21,60 +21,74 @@ function Productpage() {
     setTotalPrice(calculatedTotalPrice);
   }, []);
 
-  const handleCartAdd = (itemData) => {
-    let inCart = false;
-    for (let i = 0; i < itemsInCart.length; i++) {
-      if (itemData.id === itemsInCart[i].id) {
-        itemsInCart[i].quantity += 1;
-        itemsInCart[i].total += itemData.price;
-        setTotalPrice(totalPrice + itemData.price);
-        inCart = true;
-      }
-    }
-    if (itemsInCart.length === 0 || inCart === false) {
-      itemData.quantity = 1;
-      itemData.total = itemData.price;
-      itemsInCart.push(itemData);
-      setTotalPrice(totalPrice + itemData.price);
-    }
-    setItemsInCart(itemsInCart);
-    const string = JSON.stringify(itemsInCart);
-    localStorage.setItem("cartItems", string);
+  const updateCartItemsAndLocalStorage = (updatedCartItems) => {
+    setItemsInCart(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     localStorage.setItem("totalPrice", totalPrice);
   };
 
-  const handleCartRemove = (itemData) => {
-    for (let i = 0; i < itemsInCart.length; i++) {
-      if (itemData.id === itemsInCart[i].id) {
-        itemsInCart[i].quantity -= 1;
-        itemsInCart[i].total -= itemsInCart[i].price;
-        setTotalPrice(totalPrice - itemsInCart[i].price);
-        if (itemsInCart[i].quantity === 0) {
-          itemsInCart.splice(i, 1);
-        }
-        break;
+  const addCartItem = (itemData) => {
+    let updatedCartItems = [...itemsInCart];
+    let inCart = 0;
+
+    updatedCartItems.forEach((cartItem) => {
+      if (itemData.id === cartItem.id) {
+        cartItem.quantity += 1;
+        cartItem.total += itemData.price;
+        setTotalPrice(totalPrice + itemData.price);
+        inCart = 1;
+        return;
       }
+    });
+
+    if (!inCart) {
+      itemData.quantity = 1;
+      itemData.total = itemData.price;
+      updatedCartItems.push(itemData);
+      setTotalPrice(totalPrice + itemData.price);
     }
-    setItemsInCart(itemsInCart);
-    localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
+
+    updateCartItemsAndLocalStorage(updatedCartItems);
+  };
+
+  const removeCartItem = (itemData) => {
+    let updatedCartItems = [...itemsInCart];
+
+    updatedCartItems.forEach((cartItem, index) => {
+      if (itemData.id === cartItem.id) {
+        cartItem.quantity -= 1;
+        cartItem.total -= cartItem.price;
+        setTotalPrice(totalPrice - cartItem.price);
+
+        if (cartItem.quantity === 0) {
+          updatedCartItems.splice(index, 1);
+        }
+
+        return;
+      }
+    });
+
+    updateCartItemsAndLocalStorage(updatedCartItems);
   };
 
   return (
     <div className="product-page">
       <Header />
       <table style={{ width: "100%" }}>
-        <tr>
-          <td style={{ verticalAlign: "top" }}>
-            <ProductList handleCartAdd={handleCartAdd} />
-          </td>
-          <td style={{ verticalAlign: "top" }}>
-            <Cart
-              handleCartRemove={handleCartRemove}
-              totalPrice={totalPrice}
-              cartItems={itemsInCart}
-            />
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td style={{ verticalAlign: "top" }}>
+              <ProductList addCartItem={addCartItem} />
+            </td>
+            <td style={{ verticalAlign: "top" }}>
+              <Cart
+                removeCartItem={removeCartItem}
+                totalPrice={totalPrice}
+                cartItems={itemsInCart}
+              />
+            </td>
+          </tr>
+        </tbody>
       </table>
       <Footer />
     </div>

@@ -1,3 +1,5 @@
+// Wesley Lui  | 30173956
+// Marcus Lieu | 30170755
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

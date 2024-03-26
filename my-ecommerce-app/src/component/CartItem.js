@@ -18,7 +18,7 @@ function CartItem(props) {
         <button
           type="button"
           onClick={() => {
-            props.handleCartRemove(product);
+            props.removeCartItem(product);
           }}
         >
           Remove

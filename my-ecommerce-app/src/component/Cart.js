@@ -9,7 +9,7 @@ function Cart(props) {
       {props.cartItems.length !== 0 && (
         <div className="productList">
           <CartItem
-            handleCartRemove={props.handleCartRemove}
+            removeCartItem={props.removeCartItem}
             cartItems={props.cartItems}
           />
         </div>

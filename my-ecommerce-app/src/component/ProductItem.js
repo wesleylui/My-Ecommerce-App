@@ -29,7 +29,7 @@ function ProductItem(props) {
             Price: ${productItem.price}
           </p>
         </div>
-        <button type="button" onClick={() => props.handleCartAdd(productItem)}>
+        <button type="button" onClick={() => props.addCartItem(productItem)}>
           Add to Cart
         </button>
         {showDetails && selectID === productItem.id && (
