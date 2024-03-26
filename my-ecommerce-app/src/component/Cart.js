@@ -3,20 +3,16 @@ import CartItem from "./CartItem";
 
 function Cart(props) {
   return (
-    <div className="shopping=cart">
+    <div>
       <h1>Shopping Cart</h1>
 
       {props.cartItems.length !== 0 && (
-        <div className="productList">
           <CartItem
             removeCartItem={props.removeCartItem}
             cartItems={props.cartItems}
           />
-        </div>
       )}
-      <div className="cartTotal">
-        Total (in cart): ${Math.abs(props.totalPrice).toFixed(2)}
-      </div>
+        <strong>Total (in cart): ${(props.totalPrice).toFixed(2)}</strong>
     </div>
   );
 }

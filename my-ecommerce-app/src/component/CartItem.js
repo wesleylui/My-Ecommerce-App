@@ -4,17 +4,15 @@ function CartItem(props) {
   return props.cartItems.map(function (product) {
     return (
       <div className="product-item-cart" id={product.id}>
-        <div className="product-image">
-          <img
-            style={{ height: "300px" }}
-            src={product.image}
-            alt={product.name}
-          />
-        </div>
-        <div className="product-name">{product.name}</div>
-        <div className="product-price">Price: ${product.price}</div>
-        <div className="product-quantity">Quantity: {product.quantity}</div>
-        <div className="product-total">Total: ${product.total.toFixed(2)}</div>
+        <img style={{ height: "300px" }} src={product.image} alt={product.name}/>
+        <br/>
+        {product.name}
+        <br/>
+        Price: ${product.price}
+        <br/>
+        Quantity: {product.quantity}
+        <br/>
+        Total: ${product.total.toFixed(2)}
         <button 
           type="button"
           onClick={() => {
