@@ -7,56 +7,56 @@ import Cart from "./Cart";
 export const CartItemsContext = createContext(null);
 
 function Productpage() {
-  const [cartItems, setCartItems] = useState([]);
+  const [itemsInCart, setItemsInCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    const itemsInLocal = JSON.parse(localStorage.getItem("cartItems") || "[]");
-    setCartItems(itemsInLocal);
+    const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    setItemsInCart(cartItemsFromLocalStorage);
 
     let calculatedTotalPrice = 0;
-    for (let i = 0; i < itemsInLocal.length; i++) {
-      calculatedTotalPrice += itemsInLocal[i].total;
+    for (let i = 0; i < cartItemsFromLocalStorage.length; i++) {
+      calculatedTotalPrice += cartItemsFromLocalStorage[i].total;
     }
     setTotalPrice(calculatedTotalPrice);
   }, []);
 
-  const handleCartAdd = (childData) => {
+  const handleCartAdd = (itemData) => {
     let inCart = false;
-    for (let i = 0; i < cartItems.length; i++) {
-      if (childData.id === cartItems[i].id) {
-        cartItems[i].quantity += 1;
-        cartItems[i].total += childData.price;
-        setTotalPrice(totalPrice + childData.price);
+    for (let i = 0; i < itemsInCart.length; i++) {
+      if (itemData.id === itemsInCart[i].id) {
+        itemsInCart[i].quantity += 1;
+        itemsInCart[i].total += itemData.price;
+        setTotalPrice(totalPrice + itemData.price);
         inCart = true;
       }
     }
-    if (cartItems.length === 0 || inCart === false) {
-      childData.quantity = 1;
-      childData.total = childData.price;
-      cartItems.push(childData);
-      setTotalPrice(totalPrice + childData.price);
+    if (itemsInCart.length === 0 || inCart === false) {
+      itemData.quantity = 1;
+      itemData.total = itemData.price;
+      itemsInCart.push(itemData);
+      setTotalPrice(totalPrice + itemData.price);
     }
-    setCartItems(cartItems);
-    const string = JSON.stringify(cartItems);
+    setItemsInCart(itemsInCart);
+    const string = JSON.stringify(itemsInCart);
     localStorage.setItem("cartItems", string);
     localStorage.setItem("totalPrice", totalPrice);
   };
 
-  const handleCartRemove = (childData) => {
-    for (let i = 0; i < cartItems.length; i++) {
-      if (childData.id === cartItems[i].id) {
-        cartItems[i].quantity -= 1;
-        cartItems[i].total -= cartItems[i].price;
-        setTotalPrice(totalPrice - cartItems[i].price);
-        if (cartItems[i].quantity === 0) {
-          cartItems.splice(i, 1);
+  const handleCartRemove = (itemData) => {
+    for (let i = 0; i < itemsInCart.length; i++) {
+      if (itemData.id === itemsInCart[i].id) {
+        itemsInCart[i].quantity -= 1;
+        itemsInCart[i].total -= itemsInCart[i].price;
+        setTotalPrice(totalPrice - itemsInCart[i].price);
+        if (itemsInCart[i].quantity === 0) {
+          itemsInCart.splice(i, 1);
         }
         break;
       }
     }
-    setCartItems(cartItems);
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    setItemsInCart(itemsInCart);
+    localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
   };
 
   return (
@@ -71,7 +71,7 @@ function Productpage() {
             <Cart
               handleCartRemove={handleCartRemove}
               totalPrice={totalPrice}
-              cartItems={cartItems}
+              cartItems={itemsInCart}
             />
           </td>
         </tr>

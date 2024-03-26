@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
+import './styles.css';
 
 function ProductItem(props) {
   const [showDescription, setShowDescription] = useState(false);
