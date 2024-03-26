@@ -4,36 +4,36 @@ import './styles.css';
 
 function ProductItem(props) {
   const [showDetails, setShowDetails] = useState(false);
-  const [productHoverID, setProductHover] = useState(0);
+  const [selectID, setSelectID] = useState(0);
 
-  return props.products.map(function (product) {
+  return props.productItems.map(function (productItem) {
     return (
-      <div className="product-item" id={product.id}>
+      <div className="product-item" id={productItem.id}>
         <div className="product-image">
           <img
-            style={{ height: "300px" }}
-            src={product.image}
-            alt={product.name}
+            style={{ height: "150px" }}
+            src={productItem.image}
+            alt={productItem.name}
           />
         </div>
         <div
-          className="product-name"
+          className="product-attributes"
           onMouseEnter={function() {
             setShowDetails(!showDetails);
-            setProductHover(product.id);
+            setSelectID(productItem.id);
           }}
             onMouseLeave={() => setShowDetails(!showDetails)}
         >
           <p>
-            {product.name}<br></br>
-            Price: ${product.price}
+            {productItem.name}<br></br>
+            Price: ${productItem.price}
           </p>
         </div>
-        <button type="button" onClick={() => props.handleCartAdd(product)}>
+        <button type="button" onClick={() => props.handleCartAdd(productItem)}>
           Add to Cart
         </button>
-        {showDetails && productHoverID === product.id && (
-          <div>{product.description}</div>
+        {showDetails && selectID === productItem.id && (
+          <div>{productItem.description}</div>
         )}
       </div>
     );
