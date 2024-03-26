@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
 import { useState } from "react";
 
 function ProductItem(props) {
-  const [showDescription, setShowDescription] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
   const [productHoverID, setProductHover] = useState(0);
 
   return props.products.map(function (product) {
@@ -17,19 +16,21 @@ function ProductItem(props) {
         </div>
         <div
           className="product-name"
-          onMouseEnter={() => {
-            setShowDescription(true);
+          onMouseEnter={function() {
+            setShowDetails(!showDetails);
             setProductHover(product.id);
           }}
-          onMouseLeave={() => setShowDescription(false)}
+            onMouseLeave={() => setShowDetails(!showDetails)}
         >
-          {product.name}
+          <p>
+            {product.name}<br></br>
+            Price: ${product.price}
+          </p>
         </div>
-        <div className="product-price">Price: ${product.price}</div>
         <button type="button" onClick={() => props.handleCartAdd(product)}>
           Add to Cart
         </button>
-        {showDescription && productHoverID === product.id && (
+        {showDetails && productHoverID === product.id && (
           <div>{product.description}</div>
         )}
       </div>
