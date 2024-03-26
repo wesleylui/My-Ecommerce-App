@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+=======
+import React from "react";
+>>>>>>> 9302e4fe242ca75f4b87dee3f4f996fd2cdfb0e8
 import { useState } from "react";
+import './styles.css';
 
 function ProductItem(props) {
   const [showDetails, setShowDetails] = useState(false);
