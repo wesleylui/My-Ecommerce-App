@@ -85,3 +85,28 @@ nav {
   padding: 20px;
   margin: 20px;
 }
+
+/* Product Page */
+.product-item button {
+  background-color: #4caf50;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.product-item button:hover {
+  background-color: #45a049;
+}
+
+.product-item-cart button {
+  background-color: #4caf50;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.product-item-cart button:hover {
+  background-color: #b80f0f;
+}

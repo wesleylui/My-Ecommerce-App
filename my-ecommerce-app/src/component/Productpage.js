@@ -7,12 +7,12 @@ import Cart from "./Cart";
 export const CartItemsContext = createContext(null);
 
 function Productpage() {
-  const [itemsInCart, setItemsInCart] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem("cartItems") || "[]");
-    setItemsInCart(cartItemsFromLocalStorage);
+    setCartItems(cartItemsFromLocalStorage);
 
     let calculatedTotalPrice = 0;
     for (let i = 0; i < cartItemsFromLocalStorage.length; i++) {
@@ -22,13 +22,13 @@ function Productpage() {
   }, []);
 
   const updateCartItemsAndLocalStorage = (updatedCartItems) => {
-    setItemsInCart(updatedCartItems);
+    setCartItems(updatedCartItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     localStorage.setItem("totalPrice", totalPrice);
   };
 
   const addCartItem = (itemData) => {
-    let updatedCartItems = [...itemsInCart];
+    let updatedCartItems = [...cartItems];
     let inCart = 0;
 
     updatedCartItems.forEach((cartItem) => {
@@ -52,7 +52,7 @@ function Productpage() {
   };
 
   const removeCartItem = (itemData) => {
-    let updatedCartItems = [...itemsInCart];
+    let updatedCartItems = [...cartItems];
 
     updatedCartItems.forEach((cartItem, index) => {
       if (itemData.id === cartItem.id) {
@@ -84,7 +84,7 @@ function Productpage() {
               <Cart
                 removeCartItem={removeCartItem}
                 totalPrice={totalPrice}
-                cartItems={itemsInCart}
+                cartItems={cartItems}
               />
             </td>
           </tr>
