@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Header from "./header";
+import Footer from "./footer";
 
 function SignupPage() {
   const [username, setUsername] = useState("");
@@ -29,7 +31,8 @@ function SignupPage() {
 
   return (
     <div>
-      <h2>Signup Page</h2>
+      <Header />
+      <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
@@ -60,7 +63,10 @@ function SignupPage() {
         </label>
         <br />
         <button type="submit">Sign Up</button>
+        <br />
+        <button type="button">Switch to Login</button>
       </form>
+      <Footer />
     </div>
   );
 }

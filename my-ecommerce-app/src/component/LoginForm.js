@@ -18,6 +18,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Login</h2>
       <label>
         Username:
         <input type="text" value={username} onChange={handleUsernameChange} />
@@ -33,6 +34,8 @@ const LoginForm = () => {
       </label>
       <br />
       <button type="submit">Login</button>
+      <br />
+      <button type="button">Switch to Signup</button>
     </form>
   );
 };
