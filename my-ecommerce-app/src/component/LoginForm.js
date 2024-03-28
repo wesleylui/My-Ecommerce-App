@@ -21,7 +21,7 @@ const LoginForm = () => {
       <h2>Login</h2>
       <label>
         Username:
-        <input type="text" value={username} onChange={handleUsernameChange} />
+        <input type="text" value={username} onChange={handleUsernameChange} required/>
       </label>
       <br />
       <label>
@@ -30,6 +30,7 @@ const LoginForm = () => {
           type="password"
           value={password}
           onChange={handlePasswordChange}
+          required
         />
       </label>
       <br />
