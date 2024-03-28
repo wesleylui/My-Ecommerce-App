@@ -1,44 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+function LoginForm() {
+  let navigate = useNavigate();
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const handleSwitch = () => {
+    navigate("/SignupForm");
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <h2>Login</h2>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={handleUsernameChange} required/>
-      </label>
+      <label>Username:</label>
+      <input type="text" placeholder="Enter your username" required/>
       <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-        />
-      </label>
+
+      <label>Password:</label>
+      <input type="password" placeholder="Enter your password" required></input>
       <br />
-      <button type="submit">Login</button>
+
+      <button type="button">Login</button>
       <br />
-      <button type="button">Switch to Signup</button>
+      <button type="button" onClick={handleSwitch}>Switch to Signup</button>
     </form>
   );
-};
+}
 
 export default LoginForm;
