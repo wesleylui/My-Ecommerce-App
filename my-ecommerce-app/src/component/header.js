@@ -10,7 +10,7 @@ function Header() {
                     <img src={process.env.PUBLIC_URL + "images/logo.png"} alt="Company Logo"></img>
                 </div>
                 <div class="company-name">
-                    LeShop
+                    Company Name
                 </div>
             </header>
             <nav>
