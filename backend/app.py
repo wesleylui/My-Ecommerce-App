@@ -1,5 +1,10 @@
-#TODO: write actual app.py with CRUD functionality
-# products list goes in app.py
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import json
+import os
+
+app = Flask(__name__)
+CORS(app)
 
 products = [
     {
@@ -73,3 +78,37 @@ products = [
         "image": "images/product10.jpg",
     },
 ]
+
+def load_users():
+    with open('backend/users.json', 'r') as f:
+        return json.load(f)
+
+# TODO: write actual app.py with CRUD functionality
+# products list goes in app.py
+
+# Create (POST) - add a new user
+@app.route('/LoginPage', methods=['POST'])
+def loginUser():
+    data = request.get_json()
+    entered_username = data['username']
+    entered_password = data['password']
+    users = load_users()
+    
+    for user in users:
+        if user['username'] == entered_username and user['password'] == entered_password:
+            return jsonify({"loggedIn": True, "message": "Logged in successfully"})
+    
+    return jsonify({"loggedIn": False, "message": 'Invalid username or password'})
+
+# Read (GET) - fetch all products or specific product by ID
+@app.route('/SignupForm', methods=['GET'])
+
+
+# PUT (UPDATE) - update a product by ID
+
+# DELETE (DELETE) - delete a product by ID
+
+
+# run Flask app including following code at end of server.py
+if __name__ == "__main__":
+    app.run(debug=True)
