@@ -13,7 +13,7 @@ function LoginForm() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(username, username);
+    console.log(username, password);
     fetch("http://localhost:3000/LoginPage", {
       method: "POST",
       headers: {
@@ -21,11 +21,15 @@ function LoginForm() {
       },
       body: JSON.stringify({ username: username, password: password }),
     })
-      .then((response) => response.json())
       .then((response) => {
-        if (response.loggedIn) {
+        console.log(response);
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.message === "Logged in successfully") {
           setMessage("Authentication successful");
-          navigate("/ProductForm");
+          navigate("/ProductPage");
         } else {
           setMessage("Authentication failed");
         }

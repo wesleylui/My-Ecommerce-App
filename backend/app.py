@@ -79,29 +79,37 @@ products = [
     },
 ]
 
+
 def load_users():
-    with open('backend/users.json', 'r') as f:
+    with open("backend/users.json", "r") as f:
         return json.load(f)
+
 
 # TODO: write actual app.py with CRUD functionality
 # products list goes in app.py
 
+
 # Create (POST) - add a new user
-@app.route('/LoginPage', methods=['POST'])
+# validate Login
+@app.route("/LoginPage", methods=["POST"])
 def loginUser():
     data = request.get_json()
-    entered_username = data['username']
-    entered_password = data['password']
+    entered_username = data.get("username")
+    entered_password = data.get("password")
     users = load_users()
-    
+
     for user in users:
-        if user['username'] == entered_username and user['password'] == entered_password:
-            return jsonify({"loggedIn": True, "message": "Logged in successfully"})
-    
-    return jsonify({"loggedIn": False, "message": 'Invalid username or password'})
+        if (
+            user["username"] == entered_username
+            and user["password"] == entered_password
+        ):
+            return jsonify({"message": "Logged in successfully"})
+
+    return jsonify({"message": "Invalid username or password"})
+
 
 # Read (GET) - fetch all products or specific product by ID
-@app.route('/SignupForm', methods=['GET'])
+# @app.route('/SignupForm', methods=['GET'])
 
 
 # PUT (UPDATE) - update a product by ID
