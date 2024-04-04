@@ -4,7 +4,11 @@ import json
 import os
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+CORS(
+    app, resources={r"/*": {"origins": "http://localhost:3000"}}
+)  # Configure CORS for your frontend origin
+
 
 products = [
     {
@@ -85,23 +89,19 @@ def load_users():
         return json.load(f)
 
 
-# TODO: write actual app.py with CRUD functionality
-# products list goes in app.py
-
-
 # Create (POST) - add a new user
 # validate Login
 @app.route("/LoginPage", methods=["POST"])
 def loginUser():
     data = request.get_json()
-    entered_username = data.get("username")
-    entered_password = data.get("password")
+    entered_username = data.get("username", "")
+    entered_password = data.get("password", "")
     users = load_users()
 
     for user in users:
         if (
-            user["username"] == entered_username
-            and user["password"] == entered_password
+            user.get("username") == entered_username
+            and user.get("password") == entered_password
         ):
             return jsonify({"message": "Logged in successfully"})
 
