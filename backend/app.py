@@ -95,6 +95,10 @@ def testLoadUsers():
 
 
 # Create (POST) - add a new user
+@app.route("/SignupForm", methods=["POST"])
+def signupUser():
+    ...
+
 # validate Login
 @app.route("/LoginPage", methods=["POST"])
 def loginUser():
