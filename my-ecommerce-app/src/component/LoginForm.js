@@ -23,6 +23,9 @@ function LoginForm() {
     })
       .then((response) => {
         console.log(response);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         return response.json();
       })
       .then((data) => {
@@ -36,7 +39,9 @@ function LoginForm() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        setMessage("Authentication Failed: Incorrect username or password FRONTEND CATCH ERROR");
+        setMessage(
+          "Authentication Failed: Incorrect username or password FRONTEND CATCH ERROR"
+        );
       });
   };
 

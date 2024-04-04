@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 # CORS(app)
 CORS(
-    app, resources={r"/*": {"origins": "http://localhost:3000"}}
+    app, resources={r"/*": {"origins": "http://localhost:3000/LoginPage"}}
 )  # Configure CORS for your frontend origin
 
 
@@ -85,8 +85,13 @@ products = [
 
 
 def load_users():
-    with open("backend/users.json", "r") as f:
+    with open("users.json", "r") as f:
         return json.load(f)
+    
+@app.route("/testLoadUsers", methods=["GET"])
+def testLoadUsers():
+    users = load_users()
+    return jsonify(users)
 
 
 # Create (POST) - add a new user
@@ -103,9 +108,9 @@ def loginUser():
             user.get("username") == entered_username
             and user.get("password") == entered_password
         ):
-            return jsonify({"message": "Logged in successfully"})
+            return jsonify({"message": "Logged in successfully"}), 200
 
-    return jsonify({"message": "Invalid username or password"})
+    return jsonify({"message": "Invalid username or password"}), 401
 
 
 # Read (GET) - fetch all products or specific product by ID
