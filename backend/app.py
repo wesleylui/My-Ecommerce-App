@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 # CORS(app)
 CORS(
-    app, resources={r"/*": {"origins": "http://localhost:3000/LoginPage"}}
+    app, resources={r"/*": {"origins": "http://localhost:3000"}}
 )  # Configure CORS for your frontend origin
 
 
