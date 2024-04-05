@@ -1,1 +1,3 @@
-[{"username": "wesley", "password": "wesley", "email": "wesley@gmail.com"}, {"username": "marcus", "password": "abc123", "email": "marcus@gmail.com"}, {"username": "testuser", "password": "1234", "email": "test@gmail.com"}, {"username": "testuser2", "password": "123", "email": "testuser2@gmail.com"}]
+//empty user.json file. empty json array
+//should be empty bc no users to start with
+[]
