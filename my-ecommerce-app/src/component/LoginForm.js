@@ -32,7 +32,7 @@ function LoginForm() {
         console.log(data);
         if (data.message === "Logged in successfully") {
           setMessage("Authentication successful");
-          navigate("/ProductPage");
+          //navigate("/ProductPage");
         } else {
           setMessage("Invalid username or password");
         }
@@ -40,7 +40,7 @@ function LoginForm() {
       .catch((error) => {
         console.error("Error:", error);
         setMessage(
-          "Authentication Failed: Incorrect username or password FRONTEND CATCH ERROR"
+          "Authentication Failed: Incorrect username or password"
         );
       });
   };

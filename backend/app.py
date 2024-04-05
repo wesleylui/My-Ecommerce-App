@@ -97,7 +97,33 @@ def testLoadUsers():
 # Create (POST) - add a new user
 @app.route("/SignupForm", methods=["POST"])
 def signupUser():
-    ...
+    data = request.get_json()
+    entered_username = data.get("username")
+    entered_password = data.get("password")
+    entered_password2 = data.get("password2")
+    entered_email = data.get("email")
+    users = load_users()
+
+    for user in users:
+        if (entered_username == user.get("username")):
+            return jsonify({"message": "Username already exists"})
+
+    if (entered_password != entered_password2):
+        return jsonify({"message": "Password fields do not match"})
+
+    u = {
+        "username": entered_username,
+        "password": entered_password,
+        "email": entered_email
+    }
+
+    users.append(u)
+    with open("users.json", "w") as f:
+        json.dump(users, f)
+        
+    return jsonify({"message": "Signup successful!"}), 201
+        
+        
 
 # validate Login
 @app.route("/LoginPage", methods=["POST"])

@@ -15,7 +15,44 @@ function SignupForm() {
     navigate("/LoginPage");
   }
 
-  // const handleSignUp = 
+  const handleSignUp = async (event) => {
+    event.preventDefault();
+    fetch("http://127.0.0.1:5000/SignupForm", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: username, password: password, password2: password2, email: email }),
+    })
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.message == "Signup successful!") {
+          setMessage("Signup successful!");
+        }
+        else if (data.message == "Username already exists") {
+          setMessage("Username already exists")
+        }
+        else if (data.message == "Password fields do not match") {
+          setMessage("Password fields do not match");
+        }
+        else {
+          setMessage("Unexpected error");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setMessage(
+          "CATCH ERROR"
+        );
+      });
+  };
   return (
     <div>
       <Header />
@@ -53,9 +90,11 @@ function SignupForm() {
         required></input>
 
         <br />
-        <button type="button">Signup</button>
+        <button type="button" onClick={handleSignUp}>Signup</button>
         <br />
         <button type="button" onClick={handleSwitch}>Switch to Login</button>
+        <br />
+        {message && <p>{message}</p>}
       </form>
       <Footer />
     </div>
