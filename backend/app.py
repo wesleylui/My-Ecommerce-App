@@ -87,7 +87,8 @@ products = [
 def load_users():
     with open("users.json", "r") as f:
         return json.load(f)
-    
+
+
 @app.route("/testLoadUsers", methods=["GET"])
 def testLoadUsers():
     users = load_users()
@@ -105,25 +106,24 @@ def signupUser():
     users = load_users()
 
     for user in users:
-        if (entered_username == user.get("username")):
+        if entered_username == user.get("username"):
             return jsonify({"message": "Username already exists"})
 
-    if (entered_password != entered_password2):
+    if entered_password != entered_password2:
         return jsonify({"message": "Password fields do not match"})
 
     u = {
         "username": entered_username,
         "password": entered_password,
-        "email": entered_email
+        "email": entered_email,
     }
 
     users.append(u)
     with open("users.json", "w") as f:
         json.dump(users, f)
-        
+
     return jsonify({"message": "Signup successful!"}), 201
-        
-        
+
 
 # validate Login
 @app.route("/LoginPage", methods=["POST"])

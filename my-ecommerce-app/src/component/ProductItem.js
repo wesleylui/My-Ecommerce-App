@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import './styles.css';
+import "./styles.css";
 
 function ProductItem(props) {
   const [showDetails, setShowDetails] = useState(false);
@@ -9,24 +9,24 @@ function ProductItem(props) {
   return props.productItems.map(function (productItem) {
     return (
       <div className="product-item" id={productItem.id}>
-          <img
-            style={{ height: "150px" }}
-            src={productItem.image}
-            alt={productItem.name}
-          />
+        <img
+          style={{ height: "150px" }}
+          src={productItem.image}
+          alt={productItem.name}
+        />
         <div
-          onMouseEnter={function() {
+          onMouseEnter={function () {
             setShowDetails(!showDetails);
             setSelectID(productItem.id);
           }}
-            onMouseLeave={() => setShowDetails(!showDetails)}
+          onMouseLeave={() => setShowDetails(!showDetails)}
         >
           <p>
             <strong>{productItem.name}</strong>
           </p>
         </div>
         <p>
-        <strong>Price: ${productItem.price}</strong>
+          <strong>Price: ${productItem.price}</strong>
         </p>
         <button onClick={() => props.addCartItem(productItem)}>
           Add to Cart

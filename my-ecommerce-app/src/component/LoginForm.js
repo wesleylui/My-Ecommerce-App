@@ -32,16 +32,15 @@ function LoginForm() {
         console.log(data);
         if (data.message === "Logged in successfully") {
           setMessage("Authentication successful");
-          //navigate("/ProductPage");
+          alert("Logged in successfully");
+          navigate("/ProductPage");
         } else {
           setMessage("Invalid username or password");
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-        setMessage(
-          "Authentication Failed: Incorrect username or password"
-        );
+        setMessage("Authentication Failed: Incorrect username or password");
       });
   };
 
