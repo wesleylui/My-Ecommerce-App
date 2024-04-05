@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-import products from "../data/products";
 
 function ProductList(props) {
+  const [productItems, setProductItems] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/ProductPage")
+    .then((response) => response.json())
+    .then((data) => {
+      setProductItems(data);
+    })
+  }, []);
   return (
-      <ProductItem productItems={products} addCartItem={props.addCartItem} />
+      <ProductItem productItems={productItems} addCartItem={props.addCartItem} />
   );
 }
 export default ProductList;

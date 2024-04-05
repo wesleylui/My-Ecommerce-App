@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthenticateContext } from "./AuthenticateContext";
 
 function LoginForm() {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const {setIsLogged} = useContext(AuthenticateContext);
 
   const handleSwitch = () => {
     navigate("/SignupForm");
@@ -31,10 +33,11 @@ function LoginForm() {
       .then((data) => {
         console.log(data);
         if (data.message === "Logged in successfully") {
-          setMessage("Authentication successful");
-          alert("Logged in successfully");
+          setIsLogged(true);
+          setMessage("Logged in successfully");
           navigate("/ProductPage");
         } else {
+          setIsLogged(false);
           setMessage("Invalid username or password");
         }
       })
@@ -45,6 +48,7 @@ function LoginForm() {
   };
 
   return (
+    <AuthenticateContext.Provider value={{setIsLogged}}>
     <form>
       <h2>Login</h2>
       <label>Username:</label>
@@ -77,6 +81,7 @@ function LoginForm() {
       <br />
       {message && <p>{message}</p>}
     </form>
+    </AuthenticateContext.Provider>
   );
 }
 

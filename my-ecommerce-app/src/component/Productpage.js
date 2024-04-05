@@ -1,16 +1,26 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import Header from "./header.js";
 import Footer from "./footer.js";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
+import { useNavigate } from "react-router-dom";
+import { AuthenticateContext } from "./AuthenticateContext";
 
 export const CartItemsContext = createContext(null);
 
 function Productpage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  let navigate = useNavigate();
+  const { isLogged } = useContext(AuthenticateContext);
 
   useEffect(() => {
+
+    if (isLogged == false) {
+      navigate("/LoginPage");
+      return;
+    }
+
     const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem("cartItems") || "[]");
     setCartItems(cartItemsFromLocalStorage);
 

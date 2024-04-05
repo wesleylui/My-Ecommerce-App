@@ -40,11 +40,17 @@ function SignupForm() {
         console.log(data);
         if (data.message === "Signup successful!") {
           setMessage("Signup successful!");
-        } else if (data.message === "Username already exists") {
+        }
+        else if (data.message == "Fields cannot be empty") {
+          setMessage("Fields cannot be empty");
+        }
+        else if (data.message == "Username already exists") {
           setMessage("Username already exists");
-        } else if (data.message === "Password fields do not match") {
+        }
+        else if (data.message == "Password fields do not match") {
           setMessage("Password fields do not match");
-        } else {
+        }
+        else {
           setMessage("Unexpected error");
         }
       })

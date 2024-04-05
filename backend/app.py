@@ -112,6 +112,8 @@ def signupUser():
     if entered_password != entered_password2:
         return jsonify({"message": "Password fields do not match"})
 
+    if (entered_username == "" or entered_password == "" or entered_password2 == "" or entered_email == ""):
+        return jsonify({"message": "Fields cannot be empty"})
     u = {
         "username": entered_username,
         "password": entered_password,
@@ -143,13 +145,10 @@ def loginUser():
     return jsonify({"message": "Invalid username or password"}), 401
 
 
-# Read (GET) - fetch all products or specific product by ID
-# @app.route('/SignupForm', methods=['GET'])
+@app.route("/ProductPage", methods=["GET"])
+def load_products():
+    return jsonify(products)
 
-
-# PUT (UPDATE) - update a product by ID
-
-# DELETE (DELETE) - delete a product by ID
 
 
 # run Flask app including following code at end of server.py
